@@ -1,0 +1,40 @@
+%legend.font-weight-semibold.text-uppercase.font-size-sm.mb-1
+  =@folder_name
+- @json_tree.each do |file|
+  - f_name = file["name"].clone
+  - f_type = f_name.split('-')[0]
+  - f_ext = f_name.split('.')[1]
+  - f_short_name = f_name.clone
+  - f_short_name.slice! f_type + "-"
+  %a.list-group-item.list-group-item-action.legitRipple{"data-action" => "click->fileview#fileClicked", "data-file" => "#{f_name}", "data-type" => "#{f_type}", :style => "padding: 0 0 7px 10px;"}
+    .row{:style => "width: 100%"}
+      .col-md-12
+        %i.icon-file-xml.mr-1
+        %span.mr-2=f_short_name.split('.')[0]
+        - case f_type
+        - when "calibration"
+          %span.badge.bg-primary=f_type
+        - when "projector"
+          %span.badge.bg-success=f_type
+        - when "pose"
+          %span.badge.bg-warning=f_type
+        - when "markerboard"
+          %span.badge.bg-pink=f_type
+        - else
+          %span.badge.bg-danger=f_type
+      -#.col-md-8
+        -#%span.text-muted.float-right=f_name
+    -# %span.col-md-3= f_short_name.split('.')[0]
+    -# - case f_type
+    -# - when "calibration"
+    -#   %span.badge.bg-primary.col-md-2=f_type
+    -# - when "projector"
+    -#   %span.badge.bg-success.col-md-2=f_type
+    -# - when "pose"
+    -#   %span.badge.bg-warning.col-md-2=f_type
+    -# - when "markerboard"
+    -#   %span.badge.bg-pink.col-md-2=f_type
+    -# - else
+    -#   %span.badge.bg-danger.col-md-2=f_type
+    -# .text-muted.ml-auto
+    -#   = (f_name)

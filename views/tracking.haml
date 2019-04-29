@@ -1,0 +1,48 @@
+-@tracking_page = true
+-@use_p5 = true
+
+.content
+  .row
+    -# Camera preview
+    .col-xl-6
+      .card
+        .card-header.header-elements-inline.bg-white
+          %h1.card-title
+            Preview
+            %i.icon-camera{:style => "font-size: 24px"}
+          .header-elements
+            %a.list-icons-item{:onclick => "start();"}
+              %i.icon-play3.mr-1{:style => "font-size: 32px;"}
+            %a.list-icons-item{:onclick => "stop();"}
+              %i.icon-stop.mr-2{:style => "font-size: 32px;"}
+            .form-check.form-check-right.form-check-switchery.form-check-switchery-sm
+              %label.form-check-label
+                Live update:
+              %input.form-input-switchery#live-update{:checked => "unchecked", "data-fouc" => "", "data-switchery" => "true", :style => "display: none;", :type => "checkbox", :onchange => "toggleLiveUpdate();"}
+        .card-body.mx-auto{:style => "padding: 0 !important;"}
+          #camera-preview
+        .card-body
+          %legend.font-weight-semibold.text-uppercase.font-size-sm
+            Preview settings
+          .row
+            .col-md-6
+              .form-group
+                %label Device key:
+                %input#camera-key.form-control{:placeholder => "Input camera key (default key: camera0)", :type => "text", :value => "camera0", :onchange => "onKeyUpdated()"}
+            .col-md-4
+              .form-group
+                %label Tracker:
+                %select#tracker-select.custom-select.form-control.select-icons{:onchange => "getMarkers()"}
+                  %option{:selected => "none", "data-icon" => "cross", :value => "-1"} none
+                  %option{"data-icon" => "qrcode", :value => "artoolkitplus"} artoolkitplus
+                  %option{"data-icon" => "credit-card2", :value => "aruco"} aruco
+                  %option{"data-icon" => "chip", :value => "chilitags"} chilitags
+                  %option{"data-icon" => "barcode2", :value => "chilitags"} qrcode
+            .col-md-2
+              .form-group
+                %label Latency (ms):
+                %input#latency-input.form-control{:max => "10000", :min => "25", :value => "100", :placeholder => "100", :type => "number", :onchange => "onLatencyUpdated()"}/
+
+    -# API Request
+    .col-xl-6
+      =(haml :'partials/_api_card')

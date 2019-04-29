@@ -1,0 +1,20 @@
+.table-responsive
+  %table.table.table-striped#packages-table{"data-toggle" => "table"}
+    %thead
+      %tr
+        %th #
+        %th{"data-sortable"=>"true", "data-field"=>"name"} Name
+        %th Version
+        %th{"data-sortable"=>"true", "data-field"=>"state"} State
+    %tbody
+      -@list.each_with_index do |pkg, index|
+        %tr
+          %td{:scope => "row"}= index+1
+          %td= pkg.name
+          %td= pkg.version
+          %td
+            %h5
+              - if pkg.installed
+                %span.badge.pl-pr-3.badge-success installed
+              - else
+                %span.badge.pl-pr-3.badge-danger uninstalled

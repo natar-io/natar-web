@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="72px" viewBox="0 0 106 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ico</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#EEEEEE" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" offset="100%"></stop>
+        </linearGradient>
+        <path d="M75.415,0 C76.045,0 76.405,0.45 76.405,0.81 L76.405,71.19 C76.405,71.55 76.045,72 75.415,72 L63.535,72 C63.355,72 62.815,71.91 62.725,71.73 L29.605,24.3 L29.605,54.72 L15.835,54.72 L15.835,0.81 C15.835,0.45 16.285,0 16.735,0 L28.705,0 C28.885,0 29.425,0.09 29.515,0.27 L62.725,47.7 L62.725,0.81 C62.725,0.45 63.175,0 63.805,0 L75.415,0 Z" id="path-2"></path>
+        <filter x="-3.3%" y="-2.8%" width="106.6%" height="105.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.473618659 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nectar" transform="translate(-447.000000, -364.000000)">
+            <g id="ico" transform="translate(450.000000, 364.000000)">
+                <g id="N">
+                    <use fill="#A9A5B6" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="#ACA8A8" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                </g>
+                <path d="M0,36.5 L100,36.5" id="Line" stroke="#ACA8A8" stroke-width="5" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

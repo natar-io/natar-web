@@ -1,0 +1,36 @@
+.table-responsive
+  %table.table.table-stripped.table-xs#process-table{"data-toggle" => "table"}
+    %thead
+      %tr
+        %th{"data-sortable"=>"true", "data-field"=>"name"} Name
+        %th Actions
+        %th{"data-sortable"=>"true", "data-field"=>"state"} State
+        %th Last event date
+        %th Last event
+    %tbody
+      - @processes.each do |process|
+        - d = DateTime.strptime(process["state_changed_at"].to_s,'%s')
+        - name = process["name"]
+        %tr
+          %td= name.capitalize
+          %td
+            - if process["state"] != "up" && process["state"] != "starting"
+              %a.text-success{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "start"}
+                Start
+            - else
+              %a.text-danger{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "stop"}
+                Stop
+          %td
+            %h5
+              - if process["state"] == "unmonitored"
+                %span.badge.badge-secondary{:style => "font-size: 10px"}= process["state"]
+              - if process["state"] == "stopped"
+                %span.badge.pl-pr-3.badge-danger= process["state"]
+              - if process["state"] == "stopping"
+                %span.badge.pl-pr-3.badge-warning= process["state"]
+              - if process["state"] == "starting"
+                %span.badge.pl-pr-3.bg-indigo-400= process["state"]
+              - if process["state"] == "up"
+                %span.badge.pl-pr-3.badge-success= process["state"]
+          %td= d.strftime("%d/%m  %I:%M%p ")
+          %td= process["state_reason"]

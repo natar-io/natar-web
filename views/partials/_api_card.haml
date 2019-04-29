@@ -1,0 +1,55 @@
+-@use_api_card = true
+
+.card
+  .progress{:style => "height: 0.125rem;"}
+    .progress-bar.bg-green-400#request-progress{:style => "width: 0%"}
+      %span.sr-only 0%
+  .card-header.header-elements-inline.bg-white
+    %h1.card-title
+      API Request
+      %i.icon-circle-code{:style => "font-size: 24px"}
+    .header-elements
+      .list-icons
+        %a.list-icons-item{"data-action" => "collapse"}
+  .card-body
+    .row
+      .col-md-1.mr-4
+        .form-group
+          %button.btn.btn-icon.legitRipple{:type => "button", :onclick => "redisGet();"}
+            GET
+            %i.ml-1.icon-database-export
+      .col-md-3
+        .form-group
+          %input#rget-key.form-control{:placeholder => "Key", :type => "text", :value => ""}
+    %legend.font-weight-semibold.text-uppercase.font-size-sm
+      GET Result
+      %a.float-right.text-default{"aria-expanded" => "true", "data-target" => "#rget-body", "data-toggle" => "collapse"}
+        %i.icon-circle-down2
+    .collapse#rget-body
+      .form-group
+        %strong
+          %i.icon-primitive-dot
+          %label#rget-status-label Response status
+        %textarea.form-control#rget-response-body
+    .row
+      .col-md-1.mr-4
+        .form-group
+          %button.btn.btn-icon.legitRipple{:type => "button", :onclick => "redisSet();"}
+            SET
+            %i.ml-1.icon-database-insert
+      .col-md-3
+        .form-group
+          %input#rset-key.form-control{:placeholder => "Key", :type => "text", :value => ""}
+      .col-md-3
+        .form-group
+          %input#rset-value.form-control{:placeholder => "value", :type => "text", :value => ""}
+    %legend.font-weight-semibold.text-uppercase.font-size-sm
+      SET Result
+      %a.float-right.text-default{"aria-expanded" => "true", "data-target" => "#rset-body", "data-toggle" => "collapse"}
+        %i.icon-circle-down2
+    .collapse#rset-body
+      .form-group
+        %strong
+          %i.icon-primitive-dot
+          %label#rset-status-label Response status
+        %textarea.form-control#rset-response-body

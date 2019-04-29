@@ -1,0 +1,60 @@
+-@device_page = true
+
+.content
+  .row
+    .col-xl-6
+      .card{"data-controller" => "processes"}
+        .card-header.header-elements-inline
+          %h1.card-title
+            Running services
+            %i.icon-gear.mr-2.icon-2x
+          .header-elements
+            .list-icons
+              %a.list-icons-item{"data-action" => "collapse"}
+              %a.list-icons-item{"data-action" => "click->processes#reload"}
+                %i.icon-sync
+        .card-body
+        %div{"data-target" => "processes.list"}
+          / Stimulus injects codes here
+    .col-xl-6
+      .card{"data-controller" => "system"}
+        .card-header.header-elements-inline
+          %h6.card-title Natar System
+          .header-elements
+            %div
+              %span.badge.badge-mark.border-success.mr-2
+              Operational
+        .card-body
+          %ul.list-unstyled.mb-0
+            %li.mb-3
+              .d-flex.align-items-center.mb-1
+                CPU usage
+                %span.text-muted.ml-auto{"data-target" => "system.cpu"} 0%
+              .progress{:style => "height: 0.375rem;"}
+                .progress-bar.bg-info{"data-target" => "system.cpuprogress", :style => "width: 0%"}
+            %li.mb-3
+              .d-flex.align-items-center.mb-1
+                RAM usage
+                %span.text-muted.ml-auto{"data-target" => "system.ram"} 0/0 MB
+              .progress{:style => "height: 0.375rem;"}
+                .progress-bar.bg-success{"data-target" => "system.ramprogress",:style => "width: 0%"}
+
+            %li.mb-3
+              .d-flex.align-items-center.mb-1
+                Disk usage
+                %span.text-muted.ml-auto{"data-target" => "system.disk"} 0/0 GB
+              .progress{:style => "height: 0.375rem;"}
+                .progress-bar.bg-indigo{"data-target" => "system.diskprogress",:style => "width: 0%"}
+
+  .card{"data-controller" => "packages"}
+    .card-header.header-elements-inline
+      %h1.card-title
+        Installed packages
+        %i.icon-package.icon-2x
+      .header-elements
+        .list-icons
+          %a.list-icons-item{"data-action" => "collapse"}
+          %a.list-icons-item{"data-action" => "reload"}
+    .card-body
+      %div{"data-target" => "packages.list"}
+        / Stimulus injects codes here

@@ -1,0 +1,171 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1.0, shrink-to-fit=no", :name => "viewport"}
+    %link{:rel => "icon", :href => "assets/images/logo/ico.png"}
+    %title Natar
+
+
+    -# Font
+    %link{:href => "https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900", :rel => "stylesheet", :type => "text/css"}
+
+    -# Icons pack
+    %link{:href => "assets/icons/font-awesome/css/all.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/icons/icomoon/styles.css", :rel => "stylesheet"}
+
+    -# Bootstrap
+    %link{:href => "assets/css/bootstrap.min.css", :rel => "stylesheet"}
+
+    -# Limitless
+    %link{:href => "assets/css/bootstrap_limitless.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/css/colors.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/css/layout.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/css/components.min.css", :rel => "stylesheet"}
+
+    -# Plugins
+    %link{:href => "https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css", :rel => "stylesheet", :type => "text/css"}
+
+    %body
+      .navbar.navbar-expand-md.navbar-dark.bg-indigo
+        .navbar-brand.wmin-0.mr-3
+          %a.d-inline-block{:href => "/"}
+            %img{:alt => "", :src => "assets/images/logo/logo-full-white.png"}
+        .d-md-none
+          %button.navbar-toggler{"data-target" => "#navbar-mobile", "data-toggle" => "collapse", :type => "button"}
+            %i.icon-tree5
+        #navbar-mobile.collapse.navbar-collapse
+          %ul.navbar-nav.ml-auto
+            %li.nav-item.dropdown.dropdown-user
+              %a.navbar-nav-link.d-flex.align-items-center{:href => "#"}
+                %img.rounded-circle.mr-2{:alt => "", :height => "34", :src => "assets/images/placeholders/user-f.jpg"}/
+                %span
+                  Jane <strong> Doe </strong>
+      .navbar.navbar-expand-md.navbar-light
+        .text-center.d-md-none.w-100
+          %button.navbar-toggler.dropdown-toggle{"data-target" => "#navbar-navigation", "data-toggle" => "collapse", :type => "button"}
+            %i.icon-unfold.mr-2
+            Navigation
+        #navbar-navigation.navbar-collapse.collapse
+          %ul.navbar-nav.navbar-nav-highlight
+            %li.nav-item
+              %a.navbar-nav-link.legitRipple{:href => "device"}
+                %i.icon-home4.mr-2
+                Device
+            %li.nav-item
+              %a.navbar-nav-link{:href => "tracking"}
+                %i.icon-make-group.mr-2
+                Tracking
+            %li.nav-item
+              %a.navbar-nav-link{:href => "calibrations"}
+                %i.icon-cog3.mr-2
+                Calibrations
+        %ul.navbar-nav.navbar-nav-highlight.ml-md-auto
+          %li.nav-item.dropdown
+            %a.navbar-nav-link.dropdown-toggle.legitRipple{:href => "#", "data-toggle" => "dropdown"}
+              %i.icon-power2.mr-2
+              Quick
+            .dropdown-menu.dropdown-menu-right
+              %a.dropdown-item{:onclick => "modalRedisGet();"}
+                %i.icon-database-export
+                GET
+              %a.dropdown-item.text-muted.disabled
+                %i.icon-database-insert
+                SET
+                %span.badge.bg-green.ml-auto soon
+          %ul.navbar-nav.navbar-nav-highlight.ml-md-auto
+            %li.nav-item.dropdown
+              %a.navbar-nav-link.dropdown-toggle.legitRipple{:href => "#", "data-toggle" => "dropdown"}
+                %i.icon-stack2.mr-2
+                About
+              .dropdown-menu.dropdown-menu-right
+                %a.dropdown-item{:href => "http://www.natar.io"}
+                  %i.icon-sphere.mr-2
+                  Website
+                %a.dropdown-item{:href => "http://forum.natar.io"}
+                  %i.icon-bubble-dots4.mr-2
+                  Forum
+                %a.dropdown-item{:href => "http://doc.natar.io"}
+                  %i.icon-book2.mr-2
+                  Documentation
+      .page-header
+        .page-header-content.header-elements-md-inline
+          .page-title.d-flex
+            %h4
+              %i.icon-arrow-left52.mr-2
+              %span.font-weight-semibold
+                = @title1
+              = "- #{@title2}"
+            %a.header-elements-toggle.text-default.d-md-none{:href => "#"}
+              %i.icon-more
+          .header-elements.d-none.bg-transparent.border-0.py-0.mb-3.mb-md-0
+            .breadcrumb
+              %a.breadcrumb-item{:href => "#{@href}"}
+                %i.icon-home2.mr-2
+                Home
+              %span.breadcrumb-item.active
+                = @title1
+      .page-content.pt-0
+        .content-wrapper
+          = yield
+      .navbar.navbar-expand-lg.navbar-light.px-0
+        .container
+          .text-center.d-lg-none.w-100
+            %button.navbar-toggler.dropdown-toggle{"data-target" => "#navbar-footer", "data-toggle" => "collapse", :type => "button"}
+              %i.icon-unfold.mr-2
+              Footer
+          #navbar-footer.navbar-collapse.collapse
+            %span.navbar-text
+              © 2017 - 2019.
+              %a{:href => "#"} Natar web console
+              by
+              %a{:href => "http://rea.lity.tech", :target => "_blank"} RealityTech.
+            %ul.navbar-nav.ml-lg-auto
+              %li.nav-item
+                %a.navbar-nav-link{:href => "#"} About
+              %li.nav-item
+                %a.navbar-nav-link{:href => "#"}
+                  %i.icon-lifebuoy
+              %li.nav-item
+                %a.navbar-nav-link.font-weight-semibold{:href => "https://forum.natar.io"}
+
+    -# Scripts
+    %script{:src => "assets/js/jquery.min.js"}
+    %script{:src => "assets/js/bootstrap.bundle.min.js"}
+    %script{:src => "assets/js/vendor/axios.min.js"}
+
+    -# Plugins
+    %script{:src => "https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"}
+    %script{:src => "assets/js/plugins/loaders/blockui.min.js"}
+    %script{:src => "assets/js/plugins/ui/slinky.min.js"}
+    %script{:src => "assets/js/plugins/ui/ripple.min.js"}
+
+    %script{:src => "assets/js/plugins/notifications/pnotify.min.js"}
+    %script{:src => "assets/js/plugins/notifications/bootbox.min.js"}
+
+    %script{:src => "assets/js/plugins/forms/styling/switchery.min.js"}
+    %script{:src => "assets/js/plugins/forms/selects/select2.min.js"}
+
+    %script{:src => "assets/js/app.js"}
+
+
+    - unless @use_p5.nil?
+      %script{:src => "assets/js/vendor/p5.js"}
+      %script{:src => "assets/js/vendor/p5.dom.js"}
+
+
+    -# Custom
+    %script{:src => "assets/js/custom.js"}
+
+    - unless @tracking_page.nil?
+      %script{:src => "assets/js/image-preview.js"}
+    - unless @use_api_card.nil?
+      %script{:src => "assets/js/api-calls.js"}
+
+    %script{:src => "assets/js/api-modals.js"}
+
+    - if settings.development?
+      %script{:src => "http://localhost:8080/natar.bundle.js"}
+    - elsif settings.production?
+      %script{:src => "assets/js/natar.bundle.js"}
