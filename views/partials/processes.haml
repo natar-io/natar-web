@@ -13,13 +13,15 @@
         - name = process["name"]
         %tr
           %td= name.capitalize
-          %td
+          %td.text-center
             - if process["state"] != "up" && process["state"] != "starting"
-              %a.text-success{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "start"}
+              %button.btn.text-success{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "start"}
                 Start
+                %i.icon-play
             - else
-              %a.text-danger{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "stop"}
+              %button.btn.text-danger{"data-action" => "processes#service", "data-name" => name, "data-nextaction" => "stop"}
                 Stop
+                %i.icon-stop
           %td
             %h5
               - if process["state"] == "unmonitored"

@@ -1,0 +1,13 @@
+- @cpu_load.each_with_index do |cload, index|
+  %li.mb-3
+    .d-flex.align-items-center.mb-1
+      \##{index}
+      -cload_float = cload.gsub(',', '.').to_f
+      %span.text-muted.ml-auto #{cload_float}%
+    .progress{:style => "height: 0.375rem;"}
+      -if cload_float < 40
+        .progress-bar.bg-success{:style => "width: #{cload_float}%"}
+      -elsif cload_float < 60
+        .progress-bar.bg-warning{:style => "width: #{cload_float}%"}
+      -else
+        .progress-bar.bg-danger{:style => "width: #{cload_float}%"}

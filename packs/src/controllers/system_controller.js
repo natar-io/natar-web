@@ -3,7 +3,7 @@ import { Controller } from "stimulus"
 export default class extends Controller {
 
   static get targets() {
-    return [ "cpu", "cpuprogress", "ram", "ramprogress", "disk", "diskprogress" ]
+    return [ "cpu", "cpuprogress", "ram", "ramprogress", "disk", "diskprogress", "cpudetail"]
   }
 
   connect(){
@@ -24,10 +24,13 @@ export default class extends Controller {
       this.cpuTarget.innerHTML = `${cpu}%`;
       this.ramTarget.innerHTML = `${parseInt(ram[0]/1000)}/${parseInt(ram[1]/1000)} MB`
       this.diskTarget.innerHTML = `${parseInt(disk[0])}/${parseInt(disk[1])} GB`;
-      this.cpuprogressTarget.style.width = `${parseInt(cpu)}%`;
+      this.cpuprogressTarget.style.width = `${cpu}%`;
       this.ramprogressTarget.style.width = `${parseInt(ram[2])}%`;
       this.diskprogressTarget.style.width = `${parseInt(disk[2])}%`;
-      //$('#process-table').bootstrapTable();
+      axios.get('http://localhost:4567/test')
+      .then( (reponse) => {
+        this.cpudetailTarget.innerHTML = reponse.data;
+      });
     })
     .catch( (error) => {
       console.log(error);

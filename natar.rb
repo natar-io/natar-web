@@ -3,7 +3,7 @@
 # @Email:  palard@rea.lity.tech
 # @Project: Natar.io
 # @Last modified by:   nclsp
-# @Last modified time: 2019-04-25T14:23:02+02:00
+# @Last modified time: 2019-05-02T10:00:40+02:00
 # @Copyright: RealityTech 2018-2019
 
 # coding: utf-8
@@ -54,6 +54,12 @@ get '/calibrations' do
   default_titles
   @title2 = "Calibrations"
   haml :calibrations
+end
+
+get '/test' do
+  tmp = `mpstat -P ALL -u | tail -n +5 | awk '{print ($3)}'`
+  @cpu_load = tmp.split("\n");
+  haml :'partials/cpu_usage', :layout => false
 end
 
 ## GET/SET API
@@ -142,7 +148,8 @@ namespace '/system' do
   get '/status' do
     @disk_usage = `df -h | awk '$NF=="/"{printf "%d;%d;%s", $3,$2,$5}'`
     @ram_usage = `free | awk 'NR==2{printf "%s;%s;%.2f%%", $3,$2,$3*100/$2 }'`
-    @cpu_load = `mpstat | grep all | awk '{printf "%s", $(NF-9)}'`
+    cpu_load_string = `mpstat | grep all | awk '{printf "%s", $(NF-9)}'`
+    @cpu_load = cpu_load_string.gsub(',', '.').to_f
 
     haml :'partials/system_status', :layout => false
   end
