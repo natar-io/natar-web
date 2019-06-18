@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r9.cecaf6e
+pkgver=r12.94fd86f
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -32,16 +32,14 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
 
-
   ## Build the javascript and assets with webpack
   npm install --save-dev webpack
   yarn build
-
+  cp public/assets/packs/natar.bundle.js public/assets/js/natar.bundle.js
+  
   ## Package the gems
   bundle install --deployment
 
-  
-  cp public/assets/packs/natar.bundle.js public/assets/js/natar.bundle.js
 }
 
 package() {
@@ -75,31 +73,3 @@ package() {
   install nginx.conf $pkgdir/usr/share/$pkgname/
   install nginx.conf $pkgdir/etc/nginx/nginx-$pkgname.conf
 }
-
-
-# prepare() {
-#   cd "$srcdir/$pkgname-$pkgver"
-
-#   patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
-
-# build() {
-#   cd "$srcdir/$pkgname-$pkgver"
-
-#   ./configure --prefix=/usr
-#   make
-# }
-
-# check() {
-#   cd "$srcdir/$pkgname-$pkgver"
-
-#   make -k check
-# }
-
-# package() {
-#   cd "$srcdir/$pkgname-$pkgver"
-
-#   make DESTDIR="$pkgdir/" install
-# }
-
-# vim:set ts=2 sw=2 et:
