@@ -2,6 +2,9 @@
 
 source "https://rubygems.org" 
 
+gem 'unicorn'
+gem 'rake'
+
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-partial'
