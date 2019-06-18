@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r2.9ef49ed
+pkgver=r7.bd00f75
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -20,8 +20,8 @@ options=()
 install=
 changelog=
 source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/natar-webserver.git")
-noextract=()
 md5sums=('SKIP')
+noextract=()
 
 
 pkgver() {
@@ -29,34 +29,51 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
   cd "$srcdir/${pkgname%-git}"
+
+
+  ## Build the javascript and assets with webpack
+  npm install --save-dev webpack
+  yarn build
 
   ## Package the gems
   bundle install --deployment
 
-  ## Build the javascript and assets with webpack
-  yarn build
-
+  
+  cp public/assets/packs/natar.bundle.js public/assets/js/natar.bundle.js
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}/"
 
-  install public $pkgdir/usr/share/$pkgname/
-  install -m644 log $pkgdir/usr/share/$pkgname/
-  install tmp $pkgdir/usr/share/$pkgname/
+  mkdir -p $pkgdir/usr/share/$pkgname
+  mkdir -p $pkgdir/etc/nginx/
 
-  install vendor $pkgdir/usr/share/$pkgname/
+  mkdir -p $pkgdir/usr/bin
   
+  cp -r public $pkgdir/usr/share/$pkgname/
+  cp -r views $pkgdir/usr/share/$pkgname/
+  cp -r log $pkgdir/usr/share/$pkgname/
+  chmod -R a+w $pkgdir/usr/share/$pkgname/log
+  
+  cp -r tmp $pkgdir/usr/share/$pkgname/
+  chmod -R a+w $pkgdir/usr/share/$pkgname/tmp
+  
+  cp -r vendor $pkgdir/usr/share/$pkgname/
+  
+  install Gemfile $pkgdir/usr/share/$pkgname/
+  install Gemfile.lock $pkgdir/usr/share/$pkgname/
   install unicorn.rb $pkgdir/usr/share/$pkgname/
   install natar.rb $pkgdir/usr/share/$pkgname/
+  install config.ru $pkgdir/usr/share/$pkgname/
 
-  install nginx.conf $pkgdir/usr/share/$pkgname/
-  install nginx.conf $pkgdir/etc/nginx/nginx-natar.conf
-
+  install -Dm647 bin/start-$pkgname $pkgdir/usr/bin/start-$pkgname
+  install -Dm647 bin/stop-$pkgname $pkgdir/usr/bin/stop-$pkgname
+  install -Dm647 bin/install-$pkgname $pkgdir/usr/bin/start-$pkgname
   
+  install nginx.conf $pkgdir/usr/share/$pkgname/
+  install nginx.conf $pkgdir/etc/nginx/nginx-$pkgname.conf
 }
 
 
