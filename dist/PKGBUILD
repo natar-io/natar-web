@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r7.bd00f75
+pkgver=r9.cecaf6e
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -70,7 +70,7 @@ package() {
 
   install -Dm647 bin/start-$pkgname $pkgdir/usr/bin/start-$pkgname
   install -Dm647 bin/stop-$pkgname $pkgdir/usr/bin/stop-$pkgname
-  install -Dm647 bin/install-$pkgname $pkgdir/usr/bin/start-$pkgname
+  install -Dm647 bin/install-$pkgname $pkgdir/usr/bin/install-$pkgname
   
   install nginx.conf $pkgdir/usr/share/$pkgname/
   install nginx.conf $pkgdir/etc/nginx/nginx-$pkgname.conf
