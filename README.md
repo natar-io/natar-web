@@ -25,5 +25,7 @@
 The server is then managed by `eye` and `systemd`. 
 
 
+### Build the package
 
 
+`bundle install --deployment`

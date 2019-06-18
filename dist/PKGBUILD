@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=0.1
+pkgver=r2.9ef49ed
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -19,34 +19,70 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname-$pkgver.tar.gz
-        $pkgname-$pkgver.patch)
+source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/natar-webserver.git")
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
 
-  patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-git}"
 
-  ./configure --prefix=/usr
-  make
-}
+  ## Package the gems
+  bundle install --deployment
 
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  ## Build the javascript and assets with webpack
+  yarn build
 
-  make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-git}/"
 
-  make DESTDIR="$pkgdir/" install
+  install public $pkgdir/usr/share/$pkgname/
+  install -m644 log $pkgdir/usr/share/$pkgname/
+  install tmp $pkgdir/usr/share/$pkgname/
+
+  install vendor $pkgdir/usr/share/$pkgname/
+  
+  install unicorn.rb $pkgdir/usr/share/$pkgname/
+  install natar.rb $pkgdir/usr/share/$pkgname/
+
+  install nginx.conf $pkgdir/usr/share/$pkgname/
+  install nginx.conf $pkgdir/etc/nginx/nginx-natar.conf
+
+  
 }
+
+
+# prepare() {
+#   cd "$srcdir/$pkgname-$pkgver"
+
+#   patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+# }
+
+# build() {
+#   cd "$srcdir/$pkgname-$pkgver"
+
+#   ./configure --prefix=/usr
+#   make
+# }
+
+# check() {
+#   cd "$srcdir/$pkgname-$pkgver"
+
+#   make -k check
+# }
+
+# package() {
+#   cd "$srcdir/$pkgname-$pkgver"
+
+#   make DESTDIR="$pkgdir/" install
+# }
 
 # vim:set ts=2 sw=2 et:
