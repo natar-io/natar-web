@@ -13,7 +13,7 @@ export default class extends Controller {
 
   reload() {
     this.block();
-    axios.get('http://localhost:4567/service/info/all')
+    axios.get('/service/info/all')
     .then( (response) => {
       this.listTarget.innerHTML = response.data;
       $('#process-table').bootstrapTable();
@@ -52,7 +52,7 @@ export default class extends Controller {
     let action = event.target.dataset.nextaction;
     //this.block();
 
-    axios.get('http://localhost:4567/service/' + name + '/' + action)
+    axios.get('/service/' + name + '/' + action)
     .then( (response) => {
       successNotif('Service', '<strong>' + name.charAt(0).toUpperCase() + name.slice(1) + '</strong> successfully <strong>' + action + 'ed. </strong>');
     })

@@ -15,7 +15,7 @@ export default class extends Controller {
   }
 
   reload() {
-    axios.get('http://localhost:4567/system/status')
+    axios.get('/system/status')
     .then( (response) => {
       let values = response.data.split("\n");
       let cpu = values[0];
@@ -27,7 +27,7 @@ export default class extends Controller {
       this.cpuprogressTarget.style.width = `${cpu}%`;
       this.ramprogressTarget.style.width = `${parseInt(ram[2])}%`;
       this.diskprogressTarget.style.width = `${parseInt(disk[2])}%`;
-      axios.get('http://localhost:4567/test')
+      axios.get('/test')
       .then( (reponse) => {
         this.cpudetailTarget.innerHTML = reponse.data;
       });

@@ -67,7 +67,7 @@ export default class extends Controller {
         break;
     }
 
-    axios.get(`http://localhost:4567/service/load_configuration?file=data/${typeFolder}/${cFile}&output=${cKey}&type=${optType}`)
+    axios.get(`/service/load_configuration?file=data/${typeFolder}/${cFile}&output=${cKey}&type=${optType}`)
     .then( (response) => {
       successNotif('Calibration loaded', `<strong>Succeed with message</strong>: <br/> ${response.data}`);
     })
@@ -78,7 +78,7 @@ export default class extends Controller {
 
   async getMarkerboardsFilesList () {
     try {
-      return await axios.get('http://localhost:4567/system/files/markerboards/list');
+      return await axios.get('/system/files/markerboards/list');
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +86,7 @@ export default class extends Controller {
 
   async getCalibrationsFilesList () {
     try {
-      return await axios.get('http://localhost:4567/system/files/calibrations/list');
+      return await axios.get('/system/files/calibrations/list');
     } catch (error) {
       console.log(error);
     }

@@ -23,7 +23,7 @@ export default class extends Controller {
     let output = event.target.dataset.output;
     let type =  event.target.dataset.type;
 
-    axios.get(`http://localhost:4567/service/load_configuration?file=${file}&output=${output}&type=${type}`)
+    axios.get(`/service/load_configuration?file=${file}&output=${output}&type=${type}`)
     .then( (response) => {
       let noticeSuc = new PNotify({
         title: 'Calibration loaded',

@@ -12,7 +12,7 @@ export default class extends Controller {
 
   reload() {
     this.block() // Plays an animation
-    axios.get('http://localhost:4567/system/packages')
+    axios.get('/system/packages')
     .then( (response) => {
       this.listTarget.innerHTML = response.data;
       $("#packages-table").bootstrapTable();
