@@ -3,7 +3,7 @@
 
 ## TODO: Set this path where it will be installed
 # @dir = "./"
-@dir = "/home/jiii/natar/processes/natar-webserver/"
+@dir = "/usr/share/natar-webserver/"
 
 worker_processes 2
 working_directory @dir

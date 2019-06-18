@@ -1,1 +1,1 @@
-*.sock
+/unicorn.sock
