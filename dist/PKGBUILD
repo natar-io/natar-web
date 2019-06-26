@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r13.fb00211
+pkgver=r15.2aaefe8
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -46,8 +46,6 @@ package() {
   cd "$srcdir/${pkgname%-git}/"
 
   mkdir -p $pkgdir/usr/share/$pkgname
-  mkdir -p $pkgdir/usr/lib/systemd/system
-
   mkdir -p $pkgdir/usr/bin
   
   cp -r public $pkgdir/usr/share/$pkgname/
@@ -66,9 +64,7 @@ package() {
   install natar.rb $pkgdir/usr/share/$pkgname/
   install config.ru $pkgdir/usr/share/$pkgname/
 
-  # Install nginx as a service
-  install nginx-natar.service $pkgdir/usr/lib/systemd/system/
-  install nginx-natar.conf $pkgdir/usr/share/$pkgname/
+  # Nginx is configured in natar-utilites
   
   # Testing -- This should be done with Eye
   install -Dm647 bin/start-$pkgname $pkgdir/usr/bin/start-$pkgname
