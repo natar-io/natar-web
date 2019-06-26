@@ -29,3 +29,7 @@ The server is then managed by `eye` and `systemd`.
 
 
 `bundle install --deployment`
+
+### 
+
+`sudo systemctl start nginx-natar`
