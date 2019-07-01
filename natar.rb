@@ -119,13 +119,14 @@ class NatarWeb < Sinatra::Base
       output = params[:output]
       type = params[:type]
 
-      ## If env DIST
-      #if(ENV["DIST"])
-
-      ` natar-app natar.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` if production?
-        
-      cp = (File.read "apps/classpaths/apps.txt").strip
-      `java -cp "#{cp}:apps/apps.jar" tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` if development?
+      if Sinatra::Base.production?
+        `natar-app natar.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` 
+      end
+      
+      if Sinatra::Base.development?
+        cp = (File.read "apps/classpaths/apps.txt").strip 
+        `java -cp "#{cp}:apps/apps.jar" tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` 
+      end
     end
   end
 
@@ -176,8 +177,8 @@ class NatarWeb < Sinatra::Base
   ## Shortcuts - camera0
   get '/camera0/:action' do
     if params[:action] == "test"
-      return `camera-client --input camera0` if production?
-      return `java -jar -Xmx64m apps/camera-server-test.jar --input camera0` if development?
+      return `camera-client --input camera0` if Sinatra::Base.production?
+      return `java -jar -Xmx64m apps/camera-server-test.jar --input camera0` if Sinatra::Base.development?
     end
 
     if params[:action] == "status"
