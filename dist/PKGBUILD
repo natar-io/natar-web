@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r15.2aaefe8
+pkgver=r19.963d95a
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -47,6 +47,16 @@ package() {
 
   mkdir -p $pkgdir/usr/share/$pkgname
   mkdir -p $pkgdir/usr/bin
+
+  mkdir -p $pkgdir/usr/share/$pkgname/data/calibration
+  mkdir -p $pkgdir/usr/share/$pkgname/data/markerboards
+
+  # Possible to add files here...
+  chown 777 $pkgdir/usr/share/$pkgname/data/calibration
+  chown 777 $pkgdir/usr/share/$pkgname/data/markerboards
+
+  cp -r data/calibration/* $pkgdir/usr/share/$pkgname/data/calibration/
+  cp -r data/markerboards/* $pkgdir/usr/share/$pkgname/data/markerboards/
   
   cp -r public $pkgdir/usr/share/$pkgname/
   cp -r views $pkgdir/usr/share/$pkgname/
@@ -57,6 +67,7 @@ package() {
   chmod -R a+w $pkgdir/usr/share/$pkgname/tmp
   
   cp -r vendor $pkgdir/usr/share/$pkgname/
+
   
   install Gemfile $pkgdir/usr/share/$pkgname/
   install Gemfile.lock $pkgdir/usr/share/$pkgname/
