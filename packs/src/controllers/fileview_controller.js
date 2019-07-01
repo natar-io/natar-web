@@ -51,7 +51,7 @@ export default class extends Controller {
         optType = "-pd";
         break;
       case "projector":
-        optType = "-pd -pr";
+        optType = "-pr";
         break;
       case "pose":
         optType = "-m"; //TODO: -i only if inverted checkbox checked
