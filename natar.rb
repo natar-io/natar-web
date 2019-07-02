@@ -26,8 +26,10 @@ class NatarWeb < Sinatra::Base
   register Sinatra::Namespace
 
   # Set the app accessible from local network,
-  # set :bind, '0.0.0.0'
-  # set :port, '8090'
+  if Sinatra::Base.development?
+    set :bind, '0.0.0.0' 
+    set :port, '8090'
+  end
 
   $redis = Redis.new
 
@@ -120,7 +122,7 @@ class NatarWeb < Sinatra::Base
       type = params[:type]
 
       if Sinatra::Base.production?
-        `natar-app natar.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` 
+        `natar-app tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` 
       end
       
       if Sinatra::Base.development?
