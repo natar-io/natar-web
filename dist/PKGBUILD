@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r19.963d95a
+pkgver=r24.fe97b6f
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -48,6 +48,8 @@ package() {
   mkdir -p $pkgdir/usr/share/$pkgname
   mkdir -p $pkgdir/usr/bin
 
+  mkdir -p $pkgdir/usr/share/$pkgname/.bundle
+  
   mkdir -p $pkgdir/usr/share/$pkgname/data/calibration
   mkdir -p $pkgdir/usr/share/$pkgname/data/markerboards
 
@@ -65,10 +67,11 @@ package() {
   
   cp -r tmp $pkgdir/usr/share/$pkgname/
   chmod -R a+w $pkgdir/usr/share/$pkgname/tmp
-  
-  cp -r vendor $pkgdir/usr/share/$pkgname/
 
-  
+  # Use bundler packaged gems
+  cp -r vendor $pkgdir/usr/share/$pkgname/
+  install .bundle/config $pkgdir/usr/share/$pkgname/.bundle/
+
   install Gemfile $pkgdir/usr/share/$pkgname/
   install Gemfile.lock $pkgdir/usr/share/$pkgname/
   install unicorn.rb $pkgdir/usr/share/$pkgname/
