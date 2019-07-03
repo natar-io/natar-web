@@ -51,7 +51,7 @@ export default class extends Controller {
         optType = "-pd";
         break;
       case "projector":
-        optType = "-pr";
+        optType = "-pr -pd";
         break;
       case "pose":
         optType = "-m"; //TODO: -i only if inverted checkbox checked
@@ -60,7 +60,7 @@ export default class extends Controller {
         break;
       case "markerboard":
         typeFolder = "markerboards"
-        optType = "-mb";
+        optType = "-mbx";
         break;
       default:
         optType = "-pd"
