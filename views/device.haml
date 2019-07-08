@@ -2,11 +2,11 @@
 
 .content
   .row
-    .col-xl-6
+    .col-6
       .card{"data-controller" => "processes"}
         .card-header.header-elements-inline
           %h1.card-title
-            Running services
+            Service manager
             %i.icon-gear.mr-2.icon-2x
           .header-elements
             .list-icons
@@ -16,7 +16,7 @@
         .card-body
         %div{"data-target" => "processes.list"}
           / Stimulus injects codes here
-    .col-xl-6
+    .col-6
       .card{"data-controller" => "system"}
         .card-header.header-elements-inline
           %h6.card-title Natar System
@@ -51,7 +51,7 @@
   .card{"data-controller" => "packages"}
     .card-header.header-elements-inline
       %h1.card-title
-        Installed packages
+        Natar package viewer
         %i.icon-package.icon-2x
       .header-elements
         .list-icons

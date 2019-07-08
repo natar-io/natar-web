@@ -133,7 +133,7 @@ getImage = () => {
 getMarkers = () => {
   tracker = trackerSelect.value.toLowerCase();
   if (tracker == "-1") { return; }
-  axios.get(`/redis/get/${key}:${tracker}`)
+  axios.get(`/redis/get/${key}:markers`)
   .then(response => {
     markers = [];
     let obj = response.data;

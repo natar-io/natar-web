@@ -14,18 +14,18 @@ export default class extends Controller {
   reload() {
     this.block();
     axios.get('/service/info/all')
-    .then( (response) => {
-      this.listTarget.innerHTML = response.data;
-      $('#process-table').bootstrapTable();
-    })
-    .catch( (error) => {
-      console.log(error);
-    })
-    .then(() => {
-      this.unblock();
-    });
+      .then( (response) => {
+	this.listTarget.innerHTML = response.data;
+	$('#process-table').bootstrapTable();
+      })
+      .catch( (error) => {
+	console.log(error);
+      })
+      .then(() => {
+	this.unblock();
+      });
   }
-
+  
   block() {
     $(this.element).block({
       message: '<i class="icon-spinner2 spinner"></i>',

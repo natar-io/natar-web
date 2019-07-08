@@ -11,7 +11,7 @@ export default class extends Controller {
     this.reload();
     setInterval( () => {
       this.reload();
-    }, 1000);
+    }, 3000);
   }
 
   reload() {
@@ -27,10 +27,10 @@ export default class extends Controller {
       this.cpuprogressTarget.style.width = `${cpu}%`;
       this.ramprogressTarget.style.width = `${parseInt(ram[2])}%`;
       this.diskprogressTarget.style.width = `${parseInt(disk[2])}%`;
-      axios.get('/test')
-      .then( (reponse) => {
-        this.cpudetailTarget.innerHTML = reponse.data;
-      });
+      // axios.get('/test')
+      // .then( (reponse) => {
+      //   this.cpudetailTarget.innerHTML = reponse.data;
+      // });
     })
     .catch( (error) => {
       console.log(error);

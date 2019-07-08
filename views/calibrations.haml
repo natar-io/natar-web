@@ -2,15 +2,35 @@
 
 .content{"data-controller" => "fileview"}
   .row
-    .col-xl-4
+    .col-6
       .card
         .card-header.bg-white
           .h1.card-title
             Manage your calibration
             %i.icon-cog3.ml-1{:style => "font-size: 24px;"}
         .card-body
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          %p
+            Here you can load calibration files to your system.
+            All the calibrations displayed here are stored on your hard drive.
+            You can find them in 
+            %tt /usr/share/natar-webserver/data/calibration/
+             . Some are dedicated to your device, such as the camera calibration, while
+            others are default configurations.
+            
+          %p
+            A special kind of file are the markerboards. They represent the printed sheets
+            of paper that can be tracked by the system. They are loaded inside the <tt>markerboard</tt> key
+            as a list, then in
+            %tt markerboards:[name]:xml
+            to be used by the system.
+
+          %p
+            %b
+              This is for advanced uses and restoration. You could break the correct function of your device if you load
+              invalid calibration to specific keys.
+            
           .row
+                
             .col-md-6
               .form-group-feedback.form-group-feedback-right
                 %label.font-weight-bold File:
@@ -30,5 +50,5 @@
             / Stimulus code
 
     -# API Request
-    .col-xl-6
+    .col-6
       =haml(:'partials/_api_card')

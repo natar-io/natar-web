@@ -4,7 +4,7 @@
 .content
   .row
     -# Camera preview
-    .col-xl-6
+    .col-6
       .card
         .card-header.header-elements-inline.bg-white
           %h1.card-title
@@ -23,7 +23,7 @@
           #camera-preview
         .card-body
           %legend.font-weight-semibold.text-uppercase.font-size-sm
-            Preview settings
+            Settings
           .row
             .col-md-6
               .form-group
@@ -37,12 +37,17 @@
                   %option{"data-icon" => "qrcode", :value => "artoolkitplus"} artoolkitplus
                   %option{"data-icon" => "credit-card2", :value => "aruco"} aruco
                   %option{"data-icon" => "chip", :value => "chilitags"} chilitags
-                  %option{"data-icon" => "barcode2", :value => "chilitags"} qrcode
+                  %option{"data-icon" => "qrcode", :value => "chilitags"} qrcode
             .col-md-2
               .form-group
                 %label Latency (ms):
                 %input#latency-input.form-control{:max => "10000", :min => "25", :value => "100", :placeholder => "100", :type => "number", :onchange => "onLatencyUpdated()"}/
+          %p 
+            You need to start the services to monitor them. As the data 
+            persists in memory you can generally see an image, and tracker locations
+            even when the services are stopped.
+
 
     -# API Request
-    .col-xl-6
+    .col-6
       =(haml :'partials/_api_card')

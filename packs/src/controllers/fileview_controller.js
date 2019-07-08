@@ -63,7 +63,7 @@ export default class extends Controller {
         optType = "-mb";
         break;
       default:
-        optType = "-pd"
+        optType = "any"
         break;
     }
 

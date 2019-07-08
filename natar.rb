@@ -104,7 +104,7 @@ class NatarWeb < Sinatra::Base
       if params[:name] == "all"
         j = `eye i -j`
 
-        ## Only one list
+        ## Only one list  // Natar core must be first
         parsed = JSON.parse j
         @processes = parsed["subtree"][0]["subtree"][0]["subtree"]
         return haml :'partials/processes', :layout => false
@@ -122,6 +122,13 @@ class NatarWeb < Sinatra::Base
       file = params[:file]
       output = params[:output]
       type = params[:type]
+
+      if type == "any"
+        content = File.read("data/calibration/" + file)
+        puts "Set contents to " + output_key.to_s
+        @redis.set(output, content)
+        return "OK"
+      end
 
       if Sinatra::Base.production?
         `natar-app tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" #{type}` 
