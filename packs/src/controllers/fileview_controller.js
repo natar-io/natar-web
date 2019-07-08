@@ -60,7 +60,7 @@ export default class extends Controller {
         break;
       case "markerboard":
         typeFolder = "markerboards"
-        optType = "-mbx";
+        optType = "-mb";
         break;
       default:
         optType = "-pd"

@@ -25,6 +25,8 @@ require 'redis'
 class NatarWeb < Sinatra::Base
   register Sinatra::Namespace
 
+  $device_name = `hostname`
+  
   # Set the app accessible from local network,
   if Sinatra::Base.development?
     set :bind, '0.0.0.0' 
@@ -194,3 +196,5 @@ class NatarWeb < Sinatra::Base
   # `eye start camera_intrinsics` if request.include? "/nectar/camera0/intrinsics"
 
 end
+
+NatarWeb.run!

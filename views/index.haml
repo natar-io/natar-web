@@ -5,45 +5,68 @@
     %h6.mb-0.font-weight-semibold
       Your Natar device interface.
     %span.text-muted.d-block
-      Install packages, monitor activity, update the device.
-  .row
-    .col.col-md-4
-      .card
-        .card-body.text-center
-          %i.fa.fa-star.icon-home4.icon-2x.text-success-400.border-success-400.border-3.rounded-round.p-3.mb-3.mt-1
-          %h5.font-weight-semibold
-            Device
-          %p.mb-3
-            Manage your
-            %strong=@product_name
-            device.
-            %span.text-muted.d-block
-              This page is still under active development and every you see may change in future updates.
+      Install packages, monitor activity, change calibrations and update the device.
+  .card-deck
+    .card
+      .card-body.text-center
+        %i.fa.fa-star.icon-home4.icon-2x.text-success-400.border-success-400.border-3.rounded-round.p-3.mb-3.mt-1
+        %h5.font-weight-semibold
+          Services and packages
+        %p
+          Natar lives through its service manager and services. In this page you can see which services are running,
+          stop, and start them. You can also monitor the ressources (CPU/RAM) available.
+        %p
+          You can also see which Natar packages are installed, and in the near future update them and install
+          new ones.
+        %p
+          %span.text-muted.d-block
+            This page is still under active development and every you see may change in future updates.
+      .card-footer
+        .text-center
           %a.card-link.btn.bg-success-400.legitRipple{:href => "device"}
-            See the settings
-    .col.col-md-4
-      .card
-        .card-body.text-center
-          %i.fa.fa-star.icon-make-group.icon-2x.text-blue-700.border-blue-700.border-3.rounded-round.p-3.mb-3.mt-1
-          %h5.font-weight-semibold
-            Tracking in progress
-          %p.mb-3
-            Check out the up running Natar trackers with a live preview of every tracking services
-            currently available and running in your
-            %strong=@product_name
-            %span.text-muted.d-block
-              This page is still under active development and every you see may change in future updates.
+            Service manager
+    .card
+      .card-body.text-center
+        %i.fa.fa-star.icon-make-group.icon-2x.text-blue-700.border-blue-700.border-3.rounded-round.p-3.mb-3.mt-1
+        %h5.font-weight-semibold
+          Camera & Tracking
+        %p
+          See video feed and the trackers in a a live preview. You can see what the camera
+          tracks with every tracking services currently available and running in your device.
+        %p
+          You can also query the API to check values store in the device.
+      .card-footer
+        .text-center
           %a.card-link.btn.bg-blue-700.legitRipple{:href => "tracking"}
-            Manager Running processes
-    .col.col-md-4
-      .card
-        .card-body.text-center
-          %i.fa.fa-star.icon-camera.icon-2x.text-danger-400.border-danger-400.border-3.rounded-round.p-3.mb-3.mt-1
-          %h5.font-weight-semibold
-            Calibrations
-          %p.mb-3
-            Manage your device calibration with this handy built-in tool.
-            %span.text-muted.d-block
-              This page is still under active development and every you see may change in future updates.
-            %a.card-link.btn.bg-danger-400.legitRipple{:href => "calibrations"}
-              Tweak calibrations
+            Camera & Tracking
+            
+    .card
+      .card-body.text-center
+        %i.fa.fa-star.icon-camera.icon-2x.text-danger-400.border-danger-400.border-3.rounded-round.p-3.mb-3.mt-1
+        %h5.font-weight-semibold
+          Calibrations
+        %p.mb-3
+          Manage your device calibration with this handy built-in tool.
+          You can restore to stock calibrations in anything seems to fail.
+
+      .card-footer
+        .text-center
+          %a.text-center.card-link.btn.bg-danger-400.legitRipple{:href => "calibrations"}
+            Manage calibrations
+
+    .card
+      .card-body.text-center
+        %i.fa.fa-star.icon-home4.icon-2x.text-indigo-400.border-indigo-400.border-3.rounded-round.p-3.mb-3.mt-1
+        %h5.font-weight-semibold
+          Applications (Coming soon)
+        %p.mb-3
+          Enjoy applications made by other Natarists. The application store will enable anyone
+          to share its programs, some may require some DIY tools and skills, other dedicated
+          devices. 
+          %span.text-muted.d-block
+            The application store is planned for 2020.
+      .card-footer
+        .text-center
+          %a.card-link.btn.bg-indigo-400.disabled.legitRipple{:href => ""}
+            Install applications
+          
