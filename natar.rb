@@ -203,5 +203,3 @@ class NatarWeb < Sinatra::Base
   # `eye start camera_intrinsics` if request.include? "/nectar/camera0/intrinsics"
 
 end
-
-NatarWeb.run!
