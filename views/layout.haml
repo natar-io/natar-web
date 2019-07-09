@@ -41,6 +41,7 @@
                 %img.rounded-circle.mr-2{:alt => "", :height => "34", :src => "assets/images/placeholders/user-f.jpg"}/
                 %span
                   =$device_name
+                  
       .navbar.navbar-expand-md.navbar-light
         .text-center.d-md-none.w-100
           %button.navbar-toggler.dropdown-toggle{"data-target" => "#navbar-navigation", "data-toggle" => "collapse", :type => "button"}
@@ -73,21 +74,26 @@
                 %i.icon-database-insert
                 SET
                 %span.badge.bg-green.ml-auto soon
-          %ul.navbar-nav.navbar-nav-highlight.ml-md-auto
-            %li.nav-item.dropdown
-              %a.navbar-nav-link.dropdown-toggle.legitRipple{:href => "#", "data-toggle" => "dropdown"}
-                %i.icon-stack2.mr-2
-                About
-              .dropdown-menu.dropdown-menu-right
-                %a.dropdown-item{:href => "http://www.natar.io"}
-                  %i.icon-sphere.mr-2
-                  Website
-                %a.dropdown-item{:href => "http://forum.natar.io"}
-                  %i.icon-bubble-dots4.mr-2
-                  Forum
-                %a.dropdown-item{:href => "http://doc.natar.io"}
-                  %i.icon-book2.mr-2
-                  Documentation
+
+          %li.nav-item
+            %a.navbar-nav-link.legitRipple{:href => "http://www.natar.io"}
+              %i.icon-sphere.mr-2
+                Website
+          %li.nav-item
+            %a.navbar-nav-link.legitRipple{:href => "http://forum.natar.io"}
+              %i.icon-bubble-dots4.mr-2
+                Forum
+
+          %li.nav-item
+            %a.navbar-nav-link.legitRipple{:href => "http://doc.natar.io"}
+              %i.icon-bubble-dots4.mr-2
+                Documentation
+
+          %li.nav-item
+            %a.navbar-nav-link.legitRipple{:href => "http://dist.rea.lity.tech/papart/javadoc/"}
+              %i.icon-bubble-dots4.mr-2
+                Javadoc
+
       .page-header
         .page-header-content.header-elements-md-inline
           .page-title.d-flex

@@ -1,2 +1,2 @@
-web: sh -c 'bundle exec ruby natar.rb -p 4567'
+web: sh -c 'bundle exec ruby run.rb -p 4567'
 pack: yarn start
