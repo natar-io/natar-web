@@ -4,7 +4,7 @@
 .content
   .row
     -# Camera preview
-    .col-6
+    .col-xl-8.col-md-12
       .card
         .card-header.header-elements-inline.bg-white
           %h1.card-title
@@ -18,7 +18,9 @@
             .form-check.form-check-right.form-check-switchery.form-check-switchery-sm
               %label.form-check-label
                 Live update:
-              %input.form-input-switchery#live-update{:checked => "unchecked", "data-fouc" => "", "data-switchery" => "true", :style => "display: none;", :type => "checkbox", :onchange => "toggleLiveUpdate();"}
+              %input.form-input-switchery#live-update{:checked => "unchecked", "data-fouc" => "",
+                                                      "data-switchery" => "true", :style => "display: none;",
+                                                      :type => "checkbox", :onchange => "toggleLiveUpdate();"}
         .card-body.mx-auto{:style => "padding: 0 !important;"}
           #camera-preview
         .card-body
@@ -49,5 +51,5 @@
 
 
     -# API Request
-    .col-6
+    .col-xl-4.col-md-12
       =(haml :'partials/_api_card')

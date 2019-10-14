@@ -106,7 +106,9 @@ class NatarWeb < Sinatra::Base
 
         ## Only one list  // Natar core must be first
         parsed = JSON.parse j
-        @processes = parsed["subtree"][0]["subtree"][0]["subtree"]
+        @processes =[]
+        parsed["subtree"].each { |s| @processes = @processes + s["subtree"][0]["subtree"] } 
+        # @processes = parsed["subtree"][0]["subtree"][0]["subtree"]        
         return haml :'partials/processes', :layout => false
       else
         j = `eye i #{params[:name]} -j`

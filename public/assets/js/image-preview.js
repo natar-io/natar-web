@@ -108,6 +108,8 @@ onKeyUpdated = () => {
       .then(response => {
         ic = response.data;
         imageDataUpdated = true;
+	img = createImage(iw, ih, RGB);
+	img.loadPixels();
       });
     });
   });
@@ -144,8 +146,6 @@ getMarkers = () => {
 }
 
 updateImage = () => {
-  img = createImage(iw, ih, RGB);
-  img.loadPixels();
 
   k = 0, srcIdx = 0;
   for (idx = 0; idx < img.pixels.length; idx++) {
@@ -186,7 +186,7 @@ pClear = () => {
 
 drawImage = () => {
   if (img == null) { return; }
-  img.resize(iw, ih);
+ img.resize(iw, ih);
   image(img, 0, 0, iw, ih);
   imageReady = false;
 }

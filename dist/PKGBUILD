@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-webserver
-pkgver=r24.fe97b6f
+pkgver=r31.f3b18e7
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -63,7 +63,7 @@ package() {
   cp -r public $pkgdir/usr/share/$pkgname/
   cp -r views $pkgdir/usr/share/$pkgname/
   cp -r log $pkgdir/usr/share/$pkgname/
-  chmod -R a+w $pkgdir/usr/share/$pkgname/log
+  chmod -R a+rwx $pkgdir/usr/share/$pkgname/log
   
   cp -r tmp $pkgdir/usr/share/$pkgname/
   chmod -R a+w $pkgdir/usr/share/$pkgname/tmp
