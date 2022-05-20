@@ -4,7 +4,7 @@
 
 Developpement run: 
 
-* Sinatra server: `bundle exec ruby run.rb`
+* Sinatra server: `bundle exec unicorn` 
 * Javascripts: `./node_modules/webpack-dev-server/bin/webpack-dev-server.js`
 
 ## Dependencies

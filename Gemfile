@@ -2,7 +2,7 @@
 
 source "https://rubygems.org" 
 
-gem 'unicorn'
+gem 'unicorn', '~> 6.1'
 gem 'rake'
 gem 'eye'
 gem 'sinatra'
